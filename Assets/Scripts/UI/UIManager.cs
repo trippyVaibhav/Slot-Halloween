@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject CoffinGame_Panel;
 
+    [SerializeField] private AudioController audioController;
+
 
     private void Start()
     {
@@ -52,6 +54,7 @@ public class UIManager : MonoBehaviour
 
     private void OpenBonusGame(bool type)
     {
+        if (audioController) audioController.PlayButtonAudio();
         if (type)
         {
             if (CardGame_Panel) CardGame_Panel.SetActive(true);
@@ -67,12 +70,16 @@ public class UIManager : MonoBehaviour
 
     private void OpenPopup(GameObject Popup)
     {
+        if (audioController) audioController.PlayButtonAudio();
         if (Popup) Popup.SetActive(true);
         if (MainPopup_Object) MainPopup_Object.SetActive(true);
     }
 
     private void ClosePopup(GameObject Popup)
     {
+
+        if (audioController) audioController.PlayButtonAudio();
+
         if (Popup) Popup.SetActive(false);
         if (MainPopup_Object) MainPopup_Object.SetActive(false);
     }
